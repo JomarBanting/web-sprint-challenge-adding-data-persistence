@@ -28,6 +28,23 @@ exports.up = async function(knex) {
     .onDelete("RESTRICT")
     .onUpdate("RESTRICT")
   })
+  // .createTable("project_resources", table => {
+  //   table.increments("project_resources_id")
+  //   table.integer("resource_id")
+  //   .unsigned()
+  //   .notNullable()
+  //   .references("resource_id")
+  //   .inTable("resources")
+  //   .onDelete("RESTRICT")
+  //   .onUpdate("RESTRICT")
+  //   table.integer("project_id")
+  //   .unsigned()
+  //   .notNullable()
+  //   .references("project_id")
+  //   .inTable("projects")
+  //   .onDelete("RESTRICT")
+  //   .onUpdate("RESTRICT")
+  // })
 };
 
 /**
@@ -36,7 +53,7 @@ exports.up = async function(knex) {
  */
 exports.down = async function(knex) {
   await knex.schema
-  .dropTableIfExists()
-  .dropTableIfExists()
-  .dropTableIfExists()
+  .dropTableIfExists("tasks")
+  .dropTableIfExists("resources")
+  .dropTableIfExists("projects")
 };
